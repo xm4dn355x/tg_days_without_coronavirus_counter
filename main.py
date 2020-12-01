@@ -67,11 +67,11 @@ def send_alert_to_chat(chat_id: int) -> None:
     days = count_days()
     bot.send_message(
         chat_id=chat_id,
-        text=f'В отделе интернет проектов Ситуационного Центра ЯНАО до сих пор никто не заразился. '
-             f'Прошло {days} {get_days_word_ending(days)} с момента начала распространения коронавируса.'
+        text=f'Прошло {days} {get_days_word_ending(days)} с момента начала распространения коронавируса.\n'
+             f'В отделе Интернет Проектов Ситуационного Центра ЯНАО до сих пор никто не заразился. '
     )
 
 
 if __name__ == '__main__':
     print('tg days without coronavirus counter')
-    send_alert_to_chat(chat_id=CHAT_ID)
+    send_alert_to_chat(CHAT_ID)
