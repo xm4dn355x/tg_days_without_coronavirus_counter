@@ -16,6 +16,7 @@ from telegram.ext import Updater
 from telegram.utils.request import Request
 
 from bot_config import API_TOKEN, CHAT_ID, ADMIN_ID
+from weather_parser import get_weather
 
 
 req = Request(connect_timeout=3)
@@ -67,8 +68,9 @@ def send_alert_to_chat(chat_id: int) -> None:
     days = count_days()
     bot.send_message(
         chat_id=chat_id,
-        text=f'Прошло {days} {get_days_word_ending(days)} с момента начала распространения коронавируса.\n'
-             f'В отделе Интернет Проектов Ситуационного Центра ЯНАО до сих пор никто не заразился. '
+        text=f'Прошло {days} {get_days_word_ending(days)} с момента начала распространения коронавируса.\n\n'
+             f'В отделе Интернет Проектов Ситуационного Центра ЯНАО таки никто и не заразился, а в ЦУРе минус три 😈\n'
+             f'\n{get_weather()}'
     )
 
 
