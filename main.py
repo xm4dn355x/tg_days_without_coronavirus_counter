@@ -17,6 +17,7 @@ from telegram.utils.request import Request
 
 from bot_config import API_TOKEN, CHAT_ID, ADMIN_ID
 from weather_parser import get_weather
+from compliments import generate_compliment
 
 
 req = Request(connect_timeout=3)
@@ -62,15 +63,23 @@ def get_days_word_ending(days: int) -> str:
         return 'дня'
 
 
+def generate_message():
+    """Генерирует текст поста"""
+    days = count_days()
+    res = f'Прошло {days} {get_days_word_ending(days)} с момента начала распространения коронавируса.\n\n' \
+          f'В отделе Интернет Проектов Ситуационного Центра ЯНАО таки никто и не заразился, а в ЦУРе ±3 😈\n\n' \
+          f'{get_weather()}\n\n' \
+          f'Комплимент дня для @krisheveleva:\n' \
+          f'{generate_compliment("Кристина")}'
+    return res
+
+
 @log_error
 def send_alert_to_chat(chat_id: int) -> None:
     """Отправляет сообщение в чат с количеством дней с момента начала распространения коронавируса"""
-    days = count_days()
     bot.send_message(
         chat_id=chat_id,
-        text=f'Прошло {days} {get_days_word_ending(days)} с момента начала распространения коронавируса.\n\n'
-             f'В отделе Интернет Проектов Ситуационного Центра ЯНАО таки никто и не заразился, а в ЦУРе минус три 😈\n'
-             f'\n{get_weather()}'
+        text=generate_message()
     )
 
 
