@@ -10,6 +10,7 @@
 
 
 from datetime import datetime
+from random import choice
 
 from telegram import Bot
 from telegram.ext import Updater
@@ -66,13 +67,15 @@ def get_days_word_ending(days: int) -> str:
 def generate_message():
     """Генерирует текст поста"""
     days = count_days()
-    res = f'Прошло {days} {get_days_word_ending(days)} с момента начала распространения коронавируса.\n\n' \
-          f'В отделе Интернет Проектов Ситуационного Центра ЯНАО таки никто и не заразился, а в ЦУРе ±3 😈\n\n' \
-          f'{get_weather()}\n\n' \
-          f'Комплимент дня для @miss_krish:\n' \
-          f'{generate_compliment("Кристина")}\n\n' \
-          f'Комплимент дня для Маши:\n' \
-          f'{generate_compliment("Мария")}'
+    shevelevs_family_list = [{'link': '@miss_krish', 'name': 'Кристина'}, {'link': 'Коли', 'name': 'Николай'}]
+    shevelev = choice(shevelevs_family_list)
+    res = f"Прошло {days} {get_days_word_ending(days)} с момента начала распространения коронавируса.\n\n" \
+          f"В отделе Интернет Проектов Ситуационного Центра ЯНАО таки никто и не заразился, а в ЦУРе ±3 😈\n\n" \
+          f"{get_weather()}\n\n" \
+          f"Комплимент дня для {shevelev['link']}:\n" \
+          f"{generate_compliment(shevelev['name'])}\n\n" \
+          f"Комплимент дня для Маши:\n" \
+          f"{generate_compliment('Мария')}"
     return res
 
 
