@@ -74,7 +74,7 @@ def generate_message():
           f"{get_weather()}\n\n" \
           f"Комплимент дня для {shevelev['link']}:\n" \
           f"{generate_compliment(shevelev['name'])}\n\n" \
-          f"Комплимент дня для Маши:\n" \
+          f"Комплимент дня для @Mariya_nur89:\n" \
           f"{generate_compliment('Мария')}"
     return res
 
