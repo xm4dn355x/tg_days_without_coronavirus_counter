@@ -73,9 +73,7 @@ def generate_message():
           f"В отделе Интернет Проектов Ситуационного Центра ЯНАО таки никто и не заразился, а в ЦУРе ±3 😈\n\n" \
           f"{get_weather()}\n\n" \
           f"Комплимент дня для {shevelev['link']}:\n" \
-          f"{generate_compliment(shevelev['name'])}\n\n" \
-          f"Комплимент дня для @Mariya_nur89:\n" \
-          f"{generate_compliment('Мария')}"
+          f"{generate_compliment(shevelev['name'])}"
     return res
 
 
