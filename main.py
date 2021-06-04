@@ -8,19 +8,20 @@
 #                                                                                                                   #
 #####################################################################################################################
 
-import schedule
+# import schedule
 
-from time import sleep
+# from time import sleep
 
 from tg_bot import send_alert_to_chat
 
 
-schedule.every().day.at("11:10").do(send_alert_to_chat)
+# schedule.every().day.at("11:10").do(send_alert_to_chat)
 
 
 if __name__ == '__main__':
     print('tg days without coronavirus counter')
-    while True:
-        print('pending')
-        schedule.run_pending()
-        sleep(30)
+    # while True:
+    #     print('pending')
+    #     schedule.run_pending()
+    #     sleep(30)
+    send_alert_to_chat()
